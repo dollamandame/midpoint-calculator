@@ -404,6 +404,62 @@ document.getElementById("calculateBtn").addEventListener("click", function(){
     document.getElementById("page1").style.display = "none";
     document.getElementById("page2").style.display = "block";
 
+let tlx = parseFloat(document.getElementById("tlx").value);
+
+    let tly = parseFloat(document.getElementById("tly").value);
+
+    let trx = parseFloat(document.getElementById("trx").value);
+
+    let tryy = parseFloat(document.getElementById("try").value);
+
+    let brx = parseFloat(document.getElementById("brx").value);
+
+    let bry = parseFloat(document.getElementById("bry").value);
+
+    let blx = parseFloat(document.getElementById("blx").value);
+
+    let bly = parseFloat(document.getElementById("bly").value);
+
+    function output(id,value){
+
+        if(isNaN(value)){
+
+            document.getElementById(id).value = "N/A";
+
+        }
+
+        else{
+
+            document.getElementById(id).value = value.toFixed(3);
+
+        }
+
+    }
+
+    // Top midpoint
+
+    output("topX",(tlx + trx) / 2);
+
+    output("topY",(tly + tryy) / 2);
+
+    // Right midpoint
+
+    output("rightX",(trx + brx) / 2);
+
+    output("rightY",(tryy + bry) / 2);
+
+    // Bottom midpoint
+
+    output("bottomX",(brx + blx) / 2);
+
+    output("bottomY",(bry + bly) / 2);
+
+    // Left midpoint
+
+    output("leftX",(blx + tlx) / 2);
+
+    output("leftY",(bly + tly) / 2);
+
 });
 
 //new part or reset button
