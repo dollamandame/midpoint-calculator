@@ -381,12 +381,13 @@ function toggleNegative(id){
 
 }
 
+
 // Auto format to 3 decimals
 document.querySelectorAll("input").forEach(input => {
 
     input.addEventListener("blur", () => {
 
-        if(input.value === "") return;
+        if(input.value === "" || input.value === "-") return;
 
         let value = parseFloat(input.value);
 
@@ -398,103 +399,87 @@ document.querySelectorAll("input").forEach(input => {
 
 });
 
+
 // Calculate button
 document.getElementById("calculateBtn").addEventListener("click", function(){
 
     document.getElementById("page1").style.display = "none";
     document.getElementById("page2").style.display = "block";
 
-let tlx = parseFloat(document.getElementById("tlx").value);
 
+    let tlx = parseFloat(document.getElementById("tlx").value);
     let tly = parseFloat(document.getElementById("tly").value);
 
     let trx = parseFloat(document.getElementById("trx").value);
-
     let tryy = parseFloat(document.getElementById("try").value);
 
     let brx = parseFloat(document.getElementById("brx").value);
-
     let bry = parseFloat(document.getElementById("bry").value);
 
     let blx = parseFloat(document.getElementById("blx").value);
-
     let bly = parseFloat(document.getElementById("bly").value);
+
 
     function output(id,value){
 
         if(isNaN(value)){
-
             document.getElementById(id).value = "N/A";
-
         }
-
         else{
-
             document.getElementById(id).value = value.toFixed(3);
-
         }
 
     }
 
+
     // Top midpoint
+    output("topX", (tlx + trx) / 2);
+    output("topY", (tly + tryy) / 2);
 
-    output("topX",(tlx + trx) / 2);
-
-    output("topY",(tly + tryy) / 2);
 
     // Right midpoint
+    output("rightX", (trx + brx) / 2);
+    output("rightY", (tryy + bry) / 2);
 
-    output("rightX",(trx + brx) / 2);
-
-    output("rightY",(tryy + bry) / 2);
 
     // Bottom midpoint
+    output("bottomX", (brx + blx) / 2);
+    output("bottomY", (bry + bly) / 2);
 
-    output("bottomX",(brx + blx) / 2);
-
-    output("bottomY",(bry + bly) / 2);
 
     // Left midpoint
-
-    output("leftX",(blx + tlx) / 2);
-
-    output("leftY",(bly + tly) / 2);
-
-// Rotation angle using Top Left to Top Right edge
-
-let rotation;
-
-if(isNaN(tlx) || isNaN(tly) || isNaN(trx) || isNaN(tryy)){
-
-    rotation = null;
-
-}
-else{
-
-    let deltaX = trx - tlx;
-    let deltaY = tryy - tly;
-
-    rotation = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-
-}
+    output("leftX", (blx + tlx) / 2);
+    output("leftY", (bly + tly) / 2);
 
 
-if(rotation === null){
+    // Rotation angle
+    if(
+        isNaN(tlx) ||
+        isNaN(tly) ||
+        isNaN(trx) ||
+        isNaN(tryy)
+    ){
 
-    document.getElementById("rotationValue").textContent = "N/A°";
+        document.getElementById("rotationValue").textContent = "N/A°";
 
-}
-else{
+    }
+    else{
 
-    document.getElementById("rotationValue").textContent =
-        rotation.toFixed(3) + "°";
+        let deltaX = trx - tlx;
+        let deltaY = tryy - tly;
 
-}
+        let angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+
+        document.getElementById("rotationValue").textContent =
+            angle.toFixed(3) + "°";
+
+    }
 
 });
 
-//new part or reset button
-document.getElementById("newPartBtn").addEventListener("click", function () {
+
+// New Part button
+document.getElementById("newPartBtn").addEventListener("click", function(){
 
     document.getElementById("page2").style.display = "none";
     document.getElementById("page1").style.display = "block";
