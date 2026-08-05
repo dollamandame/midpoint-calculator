@@ -1,3 +1,4 @@
+# [MIDPOINT CALCULATOR](https://dollamandame.github.io/midpoint-calculator/)
 ## Features
 
 - Enter X and Y coordinates for all four corners of a rectangular part
