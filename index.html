@@ -460,6 +460,37 @@ let tlx = parseFloat(document.getElementById("tlx").value);
 
     output("leftY",(bly + tly) / 2);
 
+// Rotation angle using Top Left to Top Right edge
+
+let rotation;
+
+if(isNaN(tlx) || isNaN(tly) || isNaN(trx) || isNaN(tryy)){
+
+    rotation = null;
+
+}
+else{
+
+    let deltaX = trx - tlx;
+    let deltaY = tryy - tly;
+
+    rotation = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+
+}
+
+
+if(rotation === null){
+
+    document.getElementById("rotationValue").textContent = "N/A°";
+
+}
+else{
+
+    document.getElementById("rotationValue").textContent =
+        rotation.toFixed(3) + "°";
+
+}
+
 });
 
 //new part or reset button
