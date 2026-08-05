@@ -372,13 +372,13 @@ function toggleNegative(id){
 
     const input = document.getElementById(id);
 
-    if(input.value === "") return;
+    if(input.value.startsWith("-")){
+        input.value = input.value.substring(1);
+    }
+    else{
+        input.value = "-" + input.value;
+    }
 
-    let value = parseFloat(input.value);
-
-    if(isNaN(value)) return;
-
-    input.value = (-value).toFixed(3);
 }
 
 // Auto format to 3 decimals
