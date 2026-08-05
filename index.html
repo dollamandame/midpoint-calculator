@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Coordinate Midpoint Calculator</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#121212;
+    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+}
+
+h1{
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#cfcfcf;
+    font-size:1rem;
+    line-height:1.5;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#1f1f1f;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 0 20px rgba(0,0,0,.35);
+}
+
+.corner{
+    margin-bottom:25px;
+}
+
+.corner:last-child{
+    margin-bottom:0;
+}
+
+.corner label{
+    display:block;
+    font-size:1.1rem;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.coordinate-row{
+    display:flex;
+    gap:15px;
+}
+
+.coordinate{
+    flex:1;
+}
+
+.coordinate span{
+    display:block;
+    margin-bottom:6px;
+    color:#cfcfcf;
+}
+
+.coordinate input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#2d2d2d;
+    color:white;
+    font-size:1.1rem;
+    outline:none;
+}
+
+.coordinate input:focus{
+    border:2px solid #4da3ff;
+}
+
+button{
+    width:100%;
+    margin-top:30px;
+    padding:18px;
+    border:none;
+    border-radius:16px;
+    background:#2d8cff;
+    color:white;
+    font-size:1.2rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    background:#1d7cf2;
+}
+
+button:active{
+    transform:scale(.98);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Coordinate Midpoint Calculator</h1>
+
+    <div class="subtitle">
+        Insert the X and Y coordinates for each corner of the rectangular part.
+    </div>
+
+    <div class="card">
+
+        <div class="corner">
+            <label>Top Left</label>
+
+            <div class="coordinate-row">
+                <div class="coordinate">
+                    <span>X</span>
+                    <input type="number" id="tlx" step="any">
+                </div>
+
+                <div class="coordinate">
+                    <span>Y</span>
+                    <input type="number" id="tly" step="any">
+                </div>
+            </div>
+        </div>
+
+        <div class="corner">
+            <label>Top Right</label>
+
+            <div class="coordinate-row">
+                <div class="coordinate">
+                    <span>X</span>
+                    <input type="number" id="trx" step="any">
+                </div>
+
+                <div class="coordinate">
+                    <span>Y</span>
+                    <input type="number" id="try" step="any">
+                </div>
+            </div>
+        </div>
+
+        <div class="corner">
+            <label>Bottom Right</label>
+
+            <div class="coordinate-row">
+                <div class="coordinate">
+                    <span>X</span>
+                    <input type="number" id="brx" step="any">
+                </div>
+
+                <div class="coordinate">
+                    <span>Y</span>
+                    <input type="number" id="bry" step="any">
+                </div>
+            </div>
+        </div>
+
+        <div class="corner">
+            <label>Bottom Left</label>
+
+            <div class="coordinate-row">
+                <div class="coordinate">
+                    <span>X</span>
+                    <input type="number" id="blx" step="any">
+                </div>
+
+                <div class="coordinate">
+                    <span>Y</span>
+                    <input type="number" id="bly" step="any">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button id="calculateBtn">
+        Calculate
+    </button>
+
+</div>
+
+<script>
+document.getElementById("calculateBtn").addEventListener("click", () => {
+    alert("Results page coming next!");
+});
+</script>
+
+</body>
+</html>
