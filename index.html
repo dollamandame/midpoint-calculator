@@ -159,7 +159,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>X</span>
 <div class="input-row">
-<input type="decimal" id="tlx" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="next" id="tlx" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('tlx')" type="button">±</button>
 </div>
 </div>
@@ -167,7 +167,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>Y</span>
 <div class="input-row">
-<input type="decimal" id="tly" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="next" id="tly" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('tly')" type="button">±</button>
 </div>
 </div>
@@ -182,7 +182,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>X</span>
 <div class="input-row">
-<input type="decimal" id="trx" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="next" id="trx" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('trx')" type="button">±</button>
 </div>
 </div>
@@ -190,7 +190,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>Y</span>
 <div class="input-row">
-<input type="decimal" id="try" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="next" id="try" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('try')" type="button">±</button>
 </div>
 </div>
@@ -205,7 +205,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>X</span>
 <div class="input-row">
-<input type="decimal" id="brx" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="next" id="brx" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('brx')" type="button">±</button>
 </div>
 </div>
@@ -213,7 +213,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>Y</span>
 <div class="input-row">
-<input type="decimal" id="bry" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="next" id="bry" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('bry')" type="button">±</button>
 </div>
 </div>
@@ -228,7 +228,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>X</span>
 <div class="input-row">
-<input type="decimal" id="blx" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="next" id="blx" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('blx')" type="button">±</button>
 </div>
 </div>
@@ -236,7 +236,7 @@ Insert the X and Y coordinates for each corner of the rectangular part.
 <div class="coordinate">
 <span>Y</span>
 <div class="input-row">
-<input type="decimal" id="bly" step="any" placeholder="0.000">
+<input type="text" inputmode="decimal" enterkeyhint="done" id="bly" placeholder="0.000">
 <button class="neg-btn" onclick="toggleNegative('bly')" type="button">±</button>
 </div>
 </div>
@@ -263,10 +263,28 @@ function toggleNegative(id){
 
     if(isNaN(value)) return;
 
-    input.value = (-value).toString();
+    input.value = (-value).toFixed(3);
 }
 
-document.getElementById("calculateBtn").addEventListener("click",function(){
+// Auto format to 3 decimals
+document.querySelectorAll("input").forEach(input => {
+
+    input.addEventListener("blur", () => {
+
+        if(input.value === "") return;
+
+        let value = parseFloat(input.value);
+
+        if(!isNaN(value)){
+            input.value = value.toFixed(3);
+        }
+
+    });
+
+});
+
+// Calculate button
+document.getElementById("calculateBtn").addEventListener("click", function(){
 
     alert("Results page coming next!");
 
