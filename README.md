@@ -10,3 +10,6 @@
 - Supports positive and negative machine coordinates
 
 - Displays results with three decimal places
+
+## Other tool
+# [AVERAGE CALCULATOR](https://dollamandame.github.io/avg-calculator/)
