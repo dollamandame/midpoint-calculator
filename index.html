@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <title>Coordinate Midpoint Calculator</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -19,7 +21,7 @@ body{
     min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     padding:20px;
 }
 
@@ -44,13 +46,13 @@ h1{
 
 .card{
     background:#1f1f1f;
-    border-radius:20px;
+    border-radius:22px;
     padding:25px;
     box-shadow:0 0 20px rgba(0,0,0,.35);
 }
 
 .corner{
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 
 .corner:last-child{
@@ -59,62 +61,81 @@ h1{
 
 .corner label{
     display:block;
-    font-size:1.1rem;
+    font-size:1.15rem;
     font-weight:bold;
-    margin-bottom:12px;
-}
-
-.coordinate-row{
-    display:flex;
-    gap:15px;
+    margin-bottom:18px;
 }
 
 .coordinate{
-    flex:1;
+    margin-bottom:16px;
+}
+
+.coordinate:last-child{
+    margin-bottom:0;
 }
 
 .coordinate span{
     display:block;
-    margin-bottom:6px;
     color:#cfcfcf;
+    margin-bottom:8px;
+    font-size:.95rem;
 }
 
-.coordinate input{
-    width:100%;
-    padding:14px;
+.input-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    height:52px;
+    background:#2d2d2d;
     border:none;
     border-radius:12px;
-    background:#2d2d2d;
+    padding:0 14px;
     color:white;
     font-size:1.1rem;
     outline:none;
 }
 
-.coordinate input:focus{
-    border:2px solid #4da3ff;
+input:focus{
+    border:2px solid #2d8cff;
 }
 
-button{
+.neg-btn{
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:12px;
+    background:#3b3b3b;
+    color:white;
+    font-size:1.4rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.neg-btn:active{
+    transform:scale(.96);
+}
+
+.calculate{
     width:100%;
-    margin-top:30px;
-    padding:18px;
+    height:58px;
+    margin-top:25px;
+    background:#2d8cff;
     border:none;
     border-radius:16px;
-    background:#2d8cff;
     color:white;
     font-size:1.2rem;
     font-weight:bold;
     cursor:pointer;
-    transition:.2s;
 }
 
-button:hover{
-    background:#1d7cf2;
-}
-
-button:active{
+.calculate:active{
     transform:scale(.98);
 }
+
 </style>
 </head>
 
@@ -122,90 +143,135 @@ button:active{
 
 <div class="container">
 
-    <h1>Coordinate Midpoint Calculator</h1>
+<h1>Coordinate Midpoint Calculator</h1>
 
-    <div class="subtitle">
-        Insert the X and Y coordinates for each corner of the rectangular part.
-    </div>
+<div class="subtitle">
+Insert the X and Y coordinates for each corner of the rectangular part.
+</div>
 
-    <div class="card">
+<div class="card">
 
-        <div class="corner">
-            <label>Top Left</label>
+<!-- Top Left -->
+<div class="corner">
 
-            <div class="coordinate-row">
-                <div class="coordinate">
-                    <span>X</span>
-                    <input type="number" id="tlx" step="any">
-                </div>
+<label>Top Left</label>
 
-                <div class="coordinate">
-                    <span>Y</span>
-                    <input type="number" id="tly" step="any">
-                </div>
-            </div>
-        </div>
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="number" id="tlx" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('tlx')" type="button">±</button>
+</div>
+</div>
 
-        <div class="corner">
-            <label>Top Right</label>
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="number" id="tly" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('tly')" type="button">±</button>
+</div>
+</div>
 
-            <div class="coordinate-row">
-                <div class="coordinate">
-                    <span>X</span>
-                    <input type="number" id="trx" step="any">
-                </div>
+</div>
 
-                <div class="coordinate">
-                    <span>Y</span>
-                    <input type="number" id="try" step="any">
-                </div>
-            </div>
-        </div>
+<!-- Top Right -->
+<div class="corner">
 
-        <div class="corner">
-            <label>Bottom Right</label>
+<label>Top Right</label>
 
-            <div class="coordinate-row">
-                <div class="coordinate">
-                    <span>X</span>
-                    <input type="number" id="brx" step="any">
-                </div>
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="number" id="trx" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('trx')" type="button">±</button>
+</div>
+</div>
 
-                <div class="coordinate">
-                    <span>Y</span>
-                    <input type="number" id="bry" step="any">
-                </div>
-            </div>
-        </div>
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="number" id="try" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('try')" type="button">±</button>
+</div>
+</div>
 
-        <div class="corner">
-            <label>Bottom Left</label>
+</div>
 
-            <div class="coordinate-row">
-                <div class="coordinate">
-                    <span>X</span>
-                    <input type="number" id="blx" step="any">
-                </div>
+<!-- Bottom Right -->
+<div class="corner">
 
-                <div class="coordinate">
-                    <span>Y</span>
-                    <input type="number" id="bly" step="any">
-                </div>
-            </div>
-        </div>
+<label>Bottom Right</label>
 
-    </div>
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="number" id="brx" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('brx')" type="button">±</button>
+</div>
+</div>
 
-    <button id="calculateBtn">
-        Calculate
-    </button>
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="number" id="bry" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('bry')" type="button">±</button>
+</div>
+</div>
+
+</div>
+
+<!-- Bottom Left -->
+<div class="corner">
+
+<label>Bottom Left</label>
+
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="number" id="blx" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('blx')" type="button">±</button>
+</div>
+</div>
+
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="number" id="bly" step="any" placeholder="0.000">
+<button class="neg-btn" onclick="toggleNegative('bly')" type="button">±</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<button class="calculate" id="calculateBtn">
+Calculate
+</button>
 
 </div>
 
 <script>
-document.getElementById("calculateBtn").addEventListener("click", () => {
+
+function toggleNegative(id){
+
+    const input = document.getElementById(id);
+
+    if(input.value === "") return;
+
+    let value = parseFloat(input.value);
+
+    if(isNaN(value)) return;
+
+    input.value = (-value).toString();
+}
+
+document.getElementById("calculateBtn").addEventListener("click",function(){
+
     alert("Results page coming next!");
+
 });
+
 </script>
 
 </body>
