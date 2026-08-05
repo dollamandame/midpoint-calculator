@@ -141,6 +141,8 @@ input:focus{
 
 <body>
 
+<div id="page1">
+
 <div class="container">
 
 <h1>Coordinate Midpoint Calculator</h1>
@@ -250,7 +252,123 @@ Calculate
 </button>
 
 </div>
+</div>
 
+<div id="page2" style="display:none;">
+
+<div class="container">
+
+<h1>Coordinate Midpoint Calculator</h1>
+
+<div class="subtitle">
+Calculated Results
+</div>
+
+<div class="card">
+
+<label style="display:block;font-size:1.2rem;font-weight:bold;margin-bottom:10px;">
+Rotation
+</label>
+
+<div style="font-size:2rem;font-weight:bold;text-align:center;margin-bottom:25px;">
+<span id="rotationValue">N/A°</span>
+</div>
+
+<hr style="border:none;border-top:1px solid #3a3a3a;margin-bottom:20px;">
+
+<div class="corner">
+
+<label>Top Midpoint</label>
+
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="text" id="topX" value="N/A" readonly>
+</div>
+</div>
+
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="text" id="topY" value="N/A" readonly>
+</div>
+</div>
+
+</div>
+
+<div class="corner">
+
+<label>Right Midpoint</label>
+
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="text" id="rightX" value="N/A" readonly>
+</div>
+</div>
+
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="text" id="rightY" value="N/A" readonly>
+</div>
+</div>
+
+</div>
+
+<div class="corner">
+
+<label>Bottom Midpoint</label>
+
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="text" id="bottomX" value="N/A" readonly>
+</div>
+</div>
+
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="text" id="bottomY" value="N/A" readonly>
+</div>
+</div>
+
+</div>
+
+<div class="corner">
+
+<label>Left Midpoint</label>
+
+<div class="coordinate">
+<span>X</span>
+<div class="input-row">
+<input type="text" id="leftX" value="N/A" readonly>
+</div>
+</div>
+
+<div class="coordinate">
+<span>Y</span>
+<div class="input-row">
+<input type="text" id="leftY" value="N/A" readonly>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<button class="calculate" id="newPartBtn">
+New Part
+</button>
+
+</div>
+
+</div>
+
+    
+
+</div>
 <script>
 
 function toggleNegative(id){
@@ -286,7 +404,17 @@ document.querySelectorAll("input").forEach(input => {
 // Calculate button
 document.getElementById("calculateBtn").addEventListener("click", function(){
 
-    alert("Results page coming next!");
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+
+//new part or reset button
+document.getElementById("newPartBtn").addEventListener("click", function () {
+
+    document.getElementById("page2").style.display = "none";
+    document.getElementById("page1").style.display = "block";
+
+});
+});
 
 });
 
